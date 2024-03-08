@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName
 
 data class RecordsDto (
      @SerializedName("productDisplayName")
-     var name: String,
+     var name: String? = null,
      @SerializedName("listPrice")
-     var listPrice : Int,
+     var listPrice : Double? = null,
      @SerializedName("promoPrice")
-     var promoPrice: Int,
+     var promoPrice: Double? = null,
      @SerializedName("smImage")
-     var image: String,
+     var image: String? = null,
      @SerializedName("variantsColor")
-     var colors: List<ColorsDto>
+     var colors: List<ColorsDto?> = listOf()
 )

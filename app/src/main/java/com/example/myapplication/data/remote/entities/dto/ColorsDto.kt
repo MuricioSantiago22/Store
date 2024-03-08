@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class ColorsDto(
     @SerializedName("colorHex")
-    var colorHex : String
+    var colorHex : String? = null
 )
