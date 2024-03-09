@@ -45,7 +45,7 @@ fun ErrorItem(
 ) {
     Row(
         modifier = modifier.padding(16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
+        horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(

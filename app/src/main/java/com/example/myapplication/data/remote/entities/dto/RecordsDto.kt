@@ -6,11 +6,11 @@ data class RecordsDto (
      @SerializedName("productDisplayName")
      var name: String? = null,
      @SerializedName("listPrice")
-     var listPrice : Double? = null,
+     var listPrice : Float? = null,
      @SerializedName("promoPrice")
-     var promoPrice: Double? = null,
+     var promoPrice: Float? = null,
      @SerializedName("smImage")
      var image: String? = null,
      @SerializedName("variantsColor")
-     var colors: List<ColorsDto?> = listOf()
+     var variantsColor: List<ColorsDto?> = listOf()
 )

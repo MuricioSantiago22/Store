@@ -4,8 +4,8 @@ package com.example.myapplication.domain.entities.data
 
 data class Records (
     var name: String ,
-    var listPrice : Double,
-    var promoPrice: Double,
+    var listPrice : Float,
+    var promoPrice: Float,
     var image: String,
-    var colors: List<Colors>
+    var variantsColor: List<Colors>
 )

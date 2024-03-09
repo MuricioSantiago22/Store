@@ -7,10 +7,10 @@ import com.example.myapplication.domain.entities.data.Records
 
 fun RecordsDto.toDomain() = Records(
     name = this.name ?: "",
-    listPrice= this.listPrice ?: 0.0,
-    promoPrice= this.promoPrice?: 0.0,
+    listPrice= this.listPrice ?: 0f,
+    promoPrice= this.promoPrice ?:0f,
     image= this.image ?: "",
-    colors= this.colors.map {
+    variantsColor= this.variantsColor.map {
         it?.toDomain()?:Colors("")
     }
 )
