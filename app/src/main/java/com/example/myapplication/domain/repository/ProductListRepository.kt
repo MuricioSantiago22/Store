@@ -1,7 +1,6 @@
 package com.example.myapplication.domain.repository
-
-import com.example.myapplication.domain.entities.action.Either
+import com.example.myapplication.domain.entities.data.Records
 
 interface ProductListRepository {
-     fun getProductInfo(): Either
+    suspend  fun getProductInfo(pageNumber:Int):List<Records>
 }

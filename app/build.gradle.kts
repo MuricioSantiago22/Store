@@ -83,6 +83,10 @@ dependencies {
 
     //Logging Interceptor
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
+
+    // Paging Compose
+    implementation ("androidx.paging:paging-compose:1.0.0-alpha20")
+    implementation("androidx.paging:paging-runtime:3.2.0-alpha06")
 }
 kapt {
     correctErrorTypes = true

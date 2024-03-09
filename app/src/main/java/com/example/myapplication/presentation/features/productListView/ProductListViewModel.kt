@@ -1,47 +1,23 @@
 package com.example.myapplication.presentation.features.productListView
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.myapplication.domain.entities.action.Either
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.example.myapplication.domain.entities.data.Records
-import com.example.myapplication.domain.useCase.ProductListUseCase
+import com.example.myapplication.domain.repository.paged.ProductLisSource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
-import kotlin.coroutines.CoroutineContext
 
 
 @HiltViewModel
 class ProductListViewModel @Inject constructor(
-    private val productListUseCase: ProductListUseCase,
-    private val coroutineContext: CoroutineContext
+    private val  productLisSource: ProductLisSource
 ):ViewModel() {
 
-    private val _productList:MutableLiveData<List<Records>> = MutableLiveData()
-    val productList:LiveData<List<Records>> get() = _productList
+    val products : Flow<PagingData<Records>> = Pager(PagingConfig(pageSize = 40)){
+            productLisSource
 
-    init {
-        getProductList()
-    }
-
-    private fun getProductList(){
-        viewModelScope.launch(coroutineContext) {
-            val result = productListUseCase()
-            withContext(Dispatchers.Main){
-                when(result){
-                    is Either.Error -> {
-                        result.error
-                    }
-                    is Either.Success -> {
-                        _productList.value = result.getData()
-
-                    }
-                }
-            }
-        }
-    }
+    }.flow
 }

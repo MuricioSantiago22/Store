@@ -1,7 +1,6 @@
 package com.example.myapplication.presentation.di
 
-import com.example.myapplication.domain.useCase.ProductListUseCase
-import com.example.myapplication.presentation.di.CoroutineScopeModule.provideIOCoroutineContext
+import com.example.myapplication.domain.repository.paged.ProductLisSource
 import com.example.myapplication.presentation.features.productListView.ProductListViewModel
 import dagger.Module
 import dagger.Provides
@@ -15,8 +14,8 @@ object ViewModelModule {
 
     @Provides
     fun provideProductListViewModel(
-        getProductsListUseCase:ProductListUseCase
+        productLisSource: ProductLisSource
     ):ProductListViewModel{
-        return ProductListViewModel(getProductsListUseCase, provideIOCoroutineContext())
+        return ProductListViewModel( productLisSource)
     }
 }
