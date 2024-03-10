@@ -74,7 +74,8 @@ fun ProductList(products: Flow<PagingData<Records>>, modifier: Modifier = Modifi
     Box(modifier = modifier.fillMaxSize()) {
         LazyColumn {
             items(lazyProductItems) { product ->
-                ProductItem(records = product
+                ProductItem(
+                    records = product
                     ?: Records(
                         name = "",
                         listPrice = 0f,
@@ -86,7 +87,6 @@ fun ProductList(products: Flow<PagingData<Records>>, modifier: Modifier = Modifi
                 )
             }
         }
-
         when {
             lazyProductItems.loadState.refresh is LoadState.Loading -> {
                 LoadingView(modifier = Modifier.fillMaxSize())
