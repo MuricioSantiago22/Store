@@ -1,6 +1,7 @@
 package com.example.myapplication.presentation.features.productListView
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -100,7 +101,14 @@ fun ProductItem(records: Records){
                     Row {
                         for (colorHex in colorsHex) {
                             val color = Color(android.graphics.Color.parseColor(colorHex))
-                            Box(modifier = Modifier.padding(1.dp)) {
+                            Box(modifier = Modifier
+                                .padding(1.dp)
+                                .border(
+                                width = if (colorHex.isEmpty()) 0.dp else 2.dp,
+                                color = Color.Black,
+                                shape = CircleShape
+                            )
+                            ) {
                                 Box(modifier = Modifier
                                     .size(15.dp)
                                     .clip(CircleShape)
