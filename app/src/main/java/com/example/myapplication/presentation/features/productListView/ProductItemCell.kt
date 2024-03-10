@@ -61,7 +61,7 @@ fun ProductItem(records: Records){
                 records.promoPrice.let { promoPrice ->
                     if (promoPrice == listPrice) {
                         Text(
-                            text = "$$promoPrice".toString(),
+                            text = "$$promoPrice",
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Medium,
                             color = Color.Red
@@ -84,7 +84,7 @@ fun ProductItem(records: Records){
                         )
 
                         Text(
-                            text = "$$promoPrice".toString(),
+                            text = "$$promoPrice",
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Medium,
                             color = Color.Red
