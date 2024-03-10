@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class ProductListRepositoryImpl @Inject constructor(private val client: ProductInfoApiClient):ProductListRepository {
 
-    override suspend  fun getProductInfo(pageNumber: Int): List<Records> =
-        client.getProductInfo(pageNumber,40).results.recordsDto.map { it.toDomain() }
+    override suspend  fun getProductInfo(pageNumber: Int, searchString: String): List<Records> =
+        client.getProductInfo(pageNumber,searchString,40).results.recordsDto.map { it.toDomain() }
 
 }

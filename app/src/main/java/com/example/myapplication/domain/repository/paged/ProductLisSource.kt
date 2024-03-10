@@ -9,6 +9,12 @@ import javax.inject.Inject
 class ProductLisSource @Inject constructor(
     private val productListRepository: ProductListRepository
 ): PagingSource<Int, Records>() {
+
+    private var currentQuery: String? = null
+
+    fun setQuery(query: String) {
+        currentQuery = query
+    }
     override fun getRefreshKey(state: PagingState<Int, Records>): Int? {
         return null
     }
@@ -17,7 +23,7 @@ class ProductLisSource @Inject constructor(
        return try {
 
            val pageNumber = params.key ?: 1
-           val response = productListRepository.getProductInfo(pageNumber)
+           val response = productListRepository.getProductInfo(pageNumber, currentQuery?:"")
                LoadResult.Page(
                    data = response,
                    prevKey = if (pageNumber ==1) null else pageNumber -1,

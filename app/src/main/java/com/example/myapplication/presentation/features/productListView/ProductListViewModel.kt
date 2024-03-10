@@ -8,6 +8,9 @@ import com.example.myapplication.domain.entities.data.Records
 import com.example.myapplication.domain.repository.paged.ProductLisSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flatMapLatest
 import javax.inject.Inject
 
 
@@ -16,8 +19,19 @@ class ProductListViewModel @Inject constructor(
     private val  productLisSource: ProductLisSource
 ):ViewModel() {
 
-    val products : Flow<PagingData<Records>> = Pager(PagingConfig(pageSize = 40)){
+    private val _searchQuery = MutableStateFlow("")
+    private val searchQuery: StateFlow<String> = _searchQuery
+
+    val products : Flow<PagingData<Records>> = searchQuery.flatMapLatest { query ->
+        Pager(PagingConfig(pageSize = 40)){
             productLisSource
 
-    }.flow
+        }.flow
+    }
+
+    fun setQuery(query:String){
+        _searchQuery.value = query
+        productLisSource.setQuery(query)
+
+    }
 }
