@@ -24,7 +24,6 @@ class ProductListSourceTest {
             40,
             false)
         val response = createTestRecordsList()
-
         runBlocking {
             source.setQuery(query)
             source.setCategory(category)

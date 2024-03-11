@@ -1,6 +1,5 @@
 package com.example.myapplication.data.di
 
-
 import com.example.myapplication.data.repository.ProductListRepositoryImpl
 import com.example.myapplication.domain.repository.ProductListRepository
 import dagger.Binds
