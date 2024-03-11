@@ -26,21 +26,21 @@ class ProductListViewModel @Inject constructor(
     private val _category = MutableStateFlow("")
     private val category: StateFlow<String> = _category
 
-    val products : Flow<PagingData<Records>> = combine(
+    val products: Flow<PagingData<Records>> = combine(
         searchQuery,
         category
     ) { query, category ->
         Pair(query, category)
     }.flatMapLatest {
-        Pager(PagingConfig(pageSize = 40)){
+        Pager(PagingConfig(pageSize = 40)) {
             productLisSource
         }.flow
-    }
 
-    fun setSearch(query:String, category:String){
+    }
+    fun setSearch(query: String, category: String) {
         _searchQuery.value = query
         productLisSource.setQuery(query)
-        _category.value =category
+        _category.value = category
         productLisSource.setCategory(category)
 
     }

@@ -60,7 +60,6 @@ dependencies {
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation ("io.coil-kt:coil-compose:2.2.2")
     implementation ("androidx.navigation:navigation-compose:2.6.0")
     implementation ("androidx.compose.runtime:runtime-livedata:1.4.3")
     implementation("androidx.compose.material3:material3")
@@ -87,6 +86,13 @@ dependencies {
     // Paging Compose
     implementation ("androidx.paging:paging-compose:1.0.0-alpha20")
     implementation("androidx.paging:paging-runtime:3.2.0-alpha06")
+
+    //Images
+    implementation ("io.coil-kt:coil-compose:2.2.2")
+
+    //Test
+    testImplementation ("org.mockito:mockito-core:3.12.4")
+    testImplementation ("org.mockito:mockito-inline:3.12.4")
 }
 kapt {
     correctErrorTypes = true

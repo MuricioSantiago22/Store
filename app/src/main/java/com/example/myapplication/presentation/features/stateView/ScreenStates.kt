@@ -1,13 +1,17 @@
 package com.example.myapplication.presentation.features.stateView
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -26,7 +30,9 @@ fun LoadingView(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        CircularProgressIndicator()
+        CircularProgressIndicator(
+            color = Color.Magenta
+        )
     }
 }
 
@@ -36,7 +42,8 @@ fun LoadingItem() {
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .wrapContentWidth(Alignment.CenterHorizontally)
+            .wrapContentWidth(Alignment.CenterHorizontally
+            ), color = Color.Magenta
     )
 }
 
@@ -47,14 +54,15 @@ fun ErrorItem(
     onClickRetry: () -> Unit
 ) {
     Row(
-        modifier = modifier.padding(16.dp),
+        modifier = modifier.fillMaxSize().padding(16.dp).background(Color.White),
         horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Column (
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxSize()
+                .background(Color.White)
         ) {
             Text(
                 text = message,
@@ -64,7 +72,7 @@ fun ErrorItem(
                 modifier = Modifier.height(30.dp)
             )
             OutlinedButton(
-                onClick = onClickRetry,
+                onClick = onClickRetry
             ) {
                 Text(text = "Intenta de nuevo")
             }

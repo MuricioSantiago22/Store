@@ -19,12 +19,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import com.example.myapplication.presentation.viewModel.ProductListViewModel
 
 @Composable
 fun SearchBarProducts(viewModel: ProductListViewModel){
     Surface(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().testTag("component1"),
         color = MaterialTheme.colorScheme.background
     )
     {
@@ -32,19 +33,30 @@ fun SearchBarProducts(viewModel: ProductListViewModel){
         var active by remember { mutableStateOf(false) }
         SearchBar(
             query = query,
-            onQueryChange = {query =it },
+            onQueryChange = {
+                query =it
+                            },
             onSearch ={
                 viewModel.setSearch(query, "")
                 query= ""
                 active
             },
             active = active ,
-            onActiveChange ={active= !it},
-            modifier= Modifier.wrapContentHeight(),
-            placeholder = { Text(text = "Buscar por nombre") },
+            onActiveChange ={
+                active= !it
+                            },
+            modifier= Modifier.wrapContentHeight().testTag("component2"),
+            placeholder = {
+                Text(
+                    text = "Buscar por nombre"
+                )
+                          },
             leadingIcon = {
                 IconButton(
-                    onClick = {viewModel.setSearch(query, "")},
+                    onClick = {
+                        viewModel.setSearch(query, "")
+                        query =""
+                              },
                     enabled = true
                 ) {
                     Icon(
@@ -53,7 +65,8 @@ fun SearchBarProducts(viewModel: ProductListViewModel){
                     )
                 }
             }
-        ) {}
+        ) {
+        }
     }
 
 }
