@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -56,6 +57,8 @@ fun ProductItem(records: Records){
                     fontWeight = FontWeight.Medium
                 )
             }
+            Spacer(modifier = Modifier.height(25.dp))
+            Spacer(modifier = Modifier.weight(1f))
 
             records.listPrice.let { listPrice ->
                 records.promoPrice.let { promoPrice ->
@@ -82,6 +85,7 @@ fun ProductItem(records: Records){
                             text = textWithStrikeThrough,
                             style = MaterialTheme.typography.titleMedium
                         )
+                        Spacer(modifier = Modifier.height(8.dp))
 
                         Text(
                             text = "$$promoPrice",
@@ -90,6 +94,7 @@ fun ProductItem(records: Records){
                             color = Color.Red
                         )
                     }
+                    Spacer(modifier = Modifier.height(25.dp))
                     val colorsHex = records.variantsColor.mapNotNull { color ->
                         if (!color.colorHex.isNullOrEmpty()) {
                             color.colorHex
@@ -104,10 +109,10 @@ fun ProductItem(records: Records){
                             Box(modifier = Modifier
                                 .padding(1.dp)
                                 .border(
-                                width = if (colorHex.isEmpty()) 0.dp else 2.dp,
-                                color = Color.Black,
-                                shape = CircleShape
-                            )
+                                    width = if (colorHex.isEmpty()) 0.dp else 2.dp,
+                                    color = Color.Black,
+                                    shape = CircleShape
+                                )
                             ) {
                                 Box(modifier = Modifier
                                     .size(15.dp)

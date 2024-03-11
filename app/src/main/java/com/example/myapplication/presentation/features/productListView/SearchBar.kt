@@ -19,6 +19,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.example.myapplication.presentation.viewModel.ProductListViewModel
 
 @Composable
 fun SearchBarProducts(viewModel: ProductListViewModel){
@@ -33,16 +34,18 @@ fun SearchBarProducts(viewModel: ProductListViewModel){
             query = query,
             onQueryChange = {query =it },
             onSearch ={
-                viewModel.setQuery(query)
-                active = false
+                viewModel.setSearch(query, "")
+                query= ""
+                active
             },
             active = active ,
-            onActiveChange ={active= it},
+            onActiveChange ={active= !it},
             modifier= Modifier.wrapContentHeight(),
             placeholder = { Text(text = "Buscar por nombre") },
             leadingIcon = {
-                IconButton(onClick = {viewModel.setQuery(query)},
-                    enabled = false
+                IconButton(
+                    onClick = {viewModel.setSearch(query, "")},
+                    enabled = true
                 ) {
                     Icon(
                         imageVector = Icons.Default.Search,

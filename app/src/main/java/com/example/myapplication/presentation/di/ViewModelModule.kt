@@ -1,7 +1,7 @@
 package com.example.myapplication.presentation.di
 
 import com.example.myapplication.domain.repository.paged.ProductLisSource
-import com.example.myapplication.presentation.features.productListView.ProductListViewModel
+import com.example.myapplication.presentation.viewModel.ProductListViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +15,7 @@ object ViewModelModule {
     @Provides
     fun provideProductListViewModel(
         productLisSource: ProductLisSource
-    ):ProductListViewModel{
+    ): ProductListViewModel {
         return ProductListViewModel( productLisSource)
     }
 }

@@ -1,4 +1,4 @@
-package com.example.myapplication.presentation.state
+package com.example.myapplication.presentation.features.stateView
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -60,7 +60,9 @@ fun ErrorItem(
                 text = message,
                 color = Color.Red
             )
-            Spacer(modifier = Modifier.height(30.dp))
+            Spacer(
+                modifier = Modifier.height(30.dp)
+            )
             OutlinedButton(
                 onClick = onClickRetry,
             ) {

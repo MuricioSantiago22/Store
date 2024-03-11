@@ -17,7 +17,6 @@ import javax.inject.Singleton
 object NetworkModule {
     private const val URL = "https://shoppapp.liverpool.com.mx/"
 
-
     @Singleton
     @Provides
     fun provideHttpClient(): OkHttpClient {
@@ -25,6 +24,7 @@ object NetworkModule {
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         return OkHttpClient.Builder().addInterceptor(interceptor).build()
     }
+
     @Singleton
     @Provides
     fun provideProductInfoRetrofit():Retrofit{

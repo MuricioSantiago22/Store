@@ -9,6 +9,7 @@ interface ProductInfoApiClient {
     suspend fun getProductInfo(
         @Query("page-number") pageNumber: Int,
         @Query("search-string") searchString: String,
+        @Query("sort-option") sortOption: String,
         @Query("number-of-items-per-page") numberOfItemsPerPage: Int
     ): ProductInfoResponse
 }

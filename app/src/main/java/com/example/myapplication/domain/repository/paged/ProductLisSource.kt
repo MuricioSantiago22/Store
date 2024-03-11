@@ -11,19 +11,27 @@ class ProductLisSource @Inject constructor(
 ): PagingSource<Int, Records>() {
 
     private var currentQuery: String? = null
+    private var categoryString: String? = null
 
     fun setQuery(query: String) {
         currentQuery = query
     }
+    fun setCategory(category:String){
+        categoryString = category
+    }
+
     override fun getRefreshKey(state: PagingState<Int, Records>): Int? {
         return null
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Records> {
        return try {
-
            val pageNumber = params.key ?: 1
-           val response = productListRepository.getProductInfo(pageNumber, currentQuery?:"")
+           val response = productListRepository.getProductInfo(
+               pageNumber,
+               currentQuery?:"",
+               categoryString?:""
+           )
                LoadResult.Page(
                    data = response,
                    prevKey = if (pageNumber ==1) null else pageNumber -1,
@@ -33,5 +41,4 @@ class ProductLisSource @Inject constructor(
            LoadResult.Error(e)
        }
     }
-
 }
